@@ -21,6 +21,10 @@ public class Student {
         this.studentId = UUID.randomUUID().toString();
     }
 
+    public String getStudentId() {
+        return studentId;
+    }
+
     public String getName() {
         return name;
     }
