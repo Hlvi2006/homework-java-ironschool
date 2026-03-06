@@ -20,6 +20,7 @@ public class Student {
         this.email = email;
         this.studentId = UUID.randomUUID().toString();
     }
+    public Student(){}
 
     public String getStudentId() {
         return studentId;

@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Student;
 import com.example.demo.services.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,12 +23,12 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable String id){
+    public Student getStudentById( @PathVariable String id){
         return studentService.findById(id);
     }
 
     @GetMapping("/search/name")
-    public List<Student> getStudentByName(@RequestParam String name){
+    public List<Student> getStudentByName( @RequestParam String name){
         return studentService.findByName(name);
     }
 }
