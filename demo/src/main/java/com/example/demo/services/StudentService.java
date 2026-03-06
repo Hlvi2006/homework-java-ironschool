@@ -42,6 +42,7 @@ public class StudentService {
         created.setName(student.getName());
         created.setEmail(student.getEmail());
         created.setAddress(student.getAddress());
+        students.put(created.getStudentId(),created);
         return created;
     }
 
