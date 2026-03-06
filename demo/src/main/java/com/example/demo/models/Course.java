@@ -27,7 +27,7 @@ public class Course {
     }
 
 
-    //gettersmd
+    //getters
     public String getCourseId() {
         return courseId;
     }
