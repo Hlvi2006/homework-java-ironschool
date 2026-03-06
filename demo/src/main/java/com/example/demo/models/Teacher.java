@@ -1,16 +1,28 @@
 package com.example.demo.models;
 
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 import java.util.UUID;
 
 public class Teacher {
     private String teacherId;
+    @Size(min = 2, max = 50,message = "Name must be in valid size")
     private String name;
+    @Positive
     private double salary;
 
+    public  Teacher(){
+        this.teacherId= UUID.randomUUID().toString();
+    }
     public Teacher(double salary, String name) {
         this.salary = salary;
         this.name = name;
         this.teacherId= UUID.randomUUID().toString();
+    }
+
+    public String getTeacherId() {
+        return teacherId;
     }
 
     public String getName() {
