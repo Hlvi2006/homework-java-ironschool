@@ -77,4 +77,9 @@ public class CourseService {
         }
         return foundCourse;
     }
+
+    public void delete(String id){
+        findById(id);
+        courses.remove(id);
+    }
 }

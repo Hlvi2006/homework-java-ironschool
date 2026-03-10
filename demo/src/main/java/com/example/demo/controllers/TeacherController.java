@@ -4,6 +4,7 @@ import com.example.demo.models.Student;
 import com.example.demo.models.Teacher;
 import com.example.demo.services.TeacherService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,11 @@ public class TeacherController {
    @PutMapping("/{id}")
     public Teacher replaceTeacher(@PathVariable String id, @Valid @RequestBody Teacher teacher){
         return teacherService.fullUpdate(id, teacher.getName(), teacher.getSalary());
+   }
+
+   @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTeacher(@PathVariable String id){
+        teacherService.delete(id);
+        return ResponseEntity.noContent().build();
    }
 }

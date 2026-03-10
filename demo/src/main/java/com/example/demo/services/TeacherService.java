@@ -67,4 +67,8 @@ public class TeacherService {
         return foundTeacher;
     }
 
+    public void delete(String id){
+        getTeacherById(id);
+        teachers.remove(id);
+    }
 }
