@@ -27,7 +27,11 @@ public class TeacherService {
         return new ArrayList<>(teachers.values());
     }
     public Teacher getTeacherById(String id) {
-        return teachers.get(id);
+        Teacher newTeacher = teachers.get(id);
+        if(newTeacher == null){
+            throw new RuntimeException("Could not find Teacher with this id: " + id);
+        }
+        return newTeacher;
     }
     public Teacher createTeacher(Teacher teacher) {
 
@@ -54,6 +58,13 @@ public class TeacherService {
             }
         }
         return  selectedTeachersByName;
+    }
+
+    public Teacher fullUpdate(String id, String name, Double salary){
+        Teacher foundTeacher = getTeacherById(id);
+        foundTeacher.setName(name);
+        foundTeacher.setSalary(salary);
+        return foundTeacher;
     }
 
 }
