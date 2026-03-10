@@ -36,7 +36,11 @@ public class CourseService {
     }
 
     public Course findById(String id){
-        return courses.get(id);
+        Course foundCourse = courses.get(id);
+        if(foundCourse == null){
+            throw new RuntimeException("Could not find course with id: " + id);
+        }
+        return foundCourse;
     }
 
     public List<Course> findByName(String name){
@@ -53,6 +57,24 @@ public class CourseService {
         foundCourse.setPrice(price);
         foundCourse.setMoney_earned(moneyEarned);
         foundCourse.setTeacher(teacher);
+        return foundCourse;
+    }
+
+    public Course partialUpdate(String id, String name, Double price, Double moneyEarned, Teacher teacher){
+        Course foundCourse = findById(id);
+
+        if(name != null){
+            foundCourse.setName(name);
+        }
+        if(price != null){
+            foundCourse.setPrice(price);
+        }
+        if(moneyEarned != null){
+            foundCourse.setMoney_earned(moneyEarned);
+        }
+        if(teacher != null){
+            foundCourse.setTeacher(teacher);
+        }
         return foundCourse;
     }
 }
