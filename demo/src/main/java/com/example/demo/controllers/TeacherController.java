@@ -42,4 +42,8 @@ public class TeacherController {
     public Teacher replaceTeacher(@PathVariable String id, @Valid @RequestBody Teacher teacher){
         return teacherService.fullUpdate(id, teacher.getName(), teacher.getSalary());
    }
+   @PatchMapping("/{id}")
+    public Teacher updateTeacher(@PathVariable String id,@RequestBody Teacher teacher){
+        return teacherService.updatePartially(id,teacher);
+   }
 }

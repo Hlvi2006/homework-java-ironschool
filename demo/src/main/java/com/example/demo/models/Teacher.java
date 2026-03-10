@@ -20,7 +20,7 @@ public class Teacher {
     public  Teacher(){
         this.teacherId= UUID.randomUUID().toString();
     }
-    public Teacher(double salary, String name) {
+    public Teacher(Double salary, String name) {
         this.salary = salary;
         this.name = name;
         this.teacherId= UUID.randomUUID().toString();
@@ -34,7 +34,7 @@ public class Teacher {
         return name;
     }
 
-    public double getSalary() {
+    public Double getSalary() {
         return salary;
     }
 

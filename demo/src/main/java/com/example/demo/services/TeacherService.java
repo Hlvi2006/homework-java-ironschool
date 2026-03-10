@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class TeacherService {
     HashMap<String, Teacher> teachers = new HashMap<>();
-    Teacher teacher1=new Teacher(1200,"Ulvi");
-    Teacher teacher2=new Teacher(1100,"Nihad");
-    Teacher teacher3=new Teacher(1500,"Ruzi");
+    Teacher teacher1=new Teacher(1200.0,"Ulvi");
+    Teacher teacher2=new Teacher(1100.0,"Nihad");
+    Teacher teacher3=new Teacher(1500.0,"Ruzi");
 
     public TeacherService() {
         teachers.put(teacher1.getTeacherId(),teacher1);
@@ -65,6 +65,12 @@ public class TeacherService {
         foundTeacher.setName(name);
         foundTeacher.setSalary(salary);
         return foundTeacher;
+    }
+    public Teacher updatePartially(String id,Teacher teacher){
+        Teacher updatedTeacher = getTeacherById(id);
+        if(teacher.getName()!= null) updatedTeacher.setName(teacher.getName());
+        if(teacher.getSalary() != 0) updatedTeacher.setSalary(teacher.getSalary());
+        return updatedTeacher;
     }
 
 }
