@@ -48,4 +48,9 @@ public class StudentController {
     public Student updatePartialStudent(@PathVariable String id,@RequestBody Student student){
         return studentService.updateStudentPartially(id,student);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable String id){
+        studentService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

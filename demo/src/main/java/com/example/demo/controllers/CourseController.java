@@ -57,4 +57,10 @@ public class CourseController {
         return courseService.partialUpdate(id, course.getName(), course.getPrice(), course.getMoney_earned(), course.getTeacher());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCourse(@PathVariable String id){
+        courseService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

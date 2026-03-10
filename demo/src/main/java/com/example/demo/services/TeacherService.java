@@ -73,4 +73,8 @@ public class TeacherService {
         return updatedTeacher;
     }
 
+    public void delete(String id){
+        getTeacherById(id);
+        teachers.remove(id);
+    }
 }

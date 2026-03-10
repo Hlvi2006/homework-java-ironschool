@@ -66,4 +66,7 @@ public class StudentService {
         return existing;
     }
 
+    public void delete(String id){
+        students.remove(id);
+    }
 }
