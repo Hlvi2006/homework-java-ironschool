@@ -25,6 +25,7 @@ public class StudentService {
         return new ArrayList<>(students.values()) ;
     }
     public Student findById(String id){
+        if(students.get(id)== null) throw new RuntimeException("Student not found");
         return students.get(id);
     }
     public List<Student> findByName(String name){
@@ -44,6 +45,23 @@ public class StudentService {
         created.setAddress(student.getAddress());
         students.put(created.getStudentId(),created);
         return created;
+    }
+    public Student updateStudent(String id,Student student){
+        Student existing=findById(id);
+        if(student == null ) throw new RuntimeException("Request body can not be null");
+
+        existing.setName(student.getName());
+        existing.setEmail(student.getEmail());
+        existing.setAddress(student.getAddress());
+        return existing;
+    }
+    public Student updateStudentPartially(String id,Student student){
+        Student existing=findById(id);
+        if(student.getName()!= null) existing.setName(student.getName());
+        if(student.getEmail()!= null) existing.setEmail(student.getEmail());
+        if(student.getAddress()!= null) existing.setAddress(student.getAddress());
+
+        return existing;
     }
 
 }

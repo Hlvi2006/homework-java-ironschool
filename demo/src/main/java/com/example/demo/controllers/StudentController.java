@@ -39,8 +39,13 @@ public class StudentController {
         Student createdStudent = studentService.create(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
-    @PutMapping()
-    public ResponseEntity<Student> updateStudent(@RequestBody Student student){
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable String id,@RequestBody Student student){
+        Student updatedStudent=studentService.updateStudent(id,student);
+        return ResponseEntity.ok(updatedStudent);
+    }
+    @PatchMapping("/{id}")
+    public Student updatePartialStudent(@PathVariable String id,@RequestBody Student student){
+        return studentService.updateStudentPartially(id,student);
     }
 }
