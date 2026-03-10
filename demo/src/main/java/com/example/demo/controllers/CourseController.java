@@ -51,4 +51,10 @@ public class CourseController {
         return courseService.fullUpdate(id, course.getName(), course.getPrice(), course.getMoney_earned(), course.getTeacher());
     }
 
+
+    @PatchMapping("/{id}")
+    public Course patchCourse(@PathVariable String id, @RequestBody Course course){
+        return courseService.partialUpdate(id, course.getName(), course.getPrice(), course.getMoney_earned(), course.getTeacher());
+    }
+
 }

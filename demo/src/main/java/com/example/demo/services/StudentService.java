@@ -43,6 +43,7 @@ public class StudentService {
         created.setName(student.getName());
         created.setEmail(student.getEmail());
         created.setAddress(student.getAddress());
+        created.setCourse(student.getCourse());
         students.put(created.getStudentId(),created);
         return created;
     }
@@ -53,6 +54,7 @@ public class StudentService {
         existing.setName(student.getName());
         existing.setEmail(student.getEmail());
         existing.setAddress(student.getAddress());
+        existing.setCourse(student.getCourse());
         return existing;
     }
     public Student updateStudentPartially(String id,Student student){
@@ -60,7 +62,7 @@ public class StudentService {
         if(student.getName()!= null) existing.setName(student.getName());
         if(student.getEmail()!= null) existing.setEmail(student.getEmail());
         if(student.getAddress()!= null) existing.setAddress(student.getAddress());
-
+        if(student.getCourse()!= null) existing.setCourse(student.getCourse());
         return existing;
     }
 

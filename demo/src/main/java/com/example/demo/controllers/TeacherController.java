@@ -3,12 +3,13 @@ package com.example.demo.controllers;
 import com.example.demo.models.Student;
 import com.example.demo.models.Teacher;
 import com.example.demo.services.TeacherService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/teachers")
+@RequestMapping("/api/teachers")
 public class TeacherController {
     private TeacherService teacherService;
     public TeacherController(TeacherService teacherService) {
@@ -37,4 +38,8 @@ public class TeacherController {
         return teacherService.getTeachersBySalaryRange(min,max);
    }
 
+   @PutMapping("/{id}")
+    public Teacher replaceTeacher(@PathVariable String id, @Valid @RequestBody Teacher teacher){
+        return teacherService.fullUpdate(id, teacher.getName(), teacher.getSalary());
+   }
 }

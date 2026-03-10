@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -7,10 +8,14 @@ import java.util.UUID;
 
 public class Teacher {
     private String teacherId;
+
+    @NotNull
     @Size(min = 2, max = 50,message = "Name must be in valid size")
     private String name;
+
+    @NotNull
     @Positive
-    private double salary;
+    private Double salary;
 
     public  Teacher(){
         this.teacherId= UUID.randomUUID().toString();
@@ -37,7 +42,7 @@ public class Teacher {
         this.name = name;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 }
