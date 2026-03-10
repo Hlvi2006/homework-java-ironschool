@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Course;
 import com.example.demo.services.CourseService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +43,11 @@ public class CourseController {
     public ResponseEntity<Course> createCourse(@RequestBody Course course){
         courseService.create(course.getName(), course.getPrice());
         return ResponseEntity.status(HttpStatus.CREATED).body(course);
+    }
+
+    @PutMapping("/{id}")
+    public Course replaceCourse(@PathVariable String id, @Valid @RequestBody Course course){
+        Course foundCourse = courseService.findById(id);
+        return courseService.fullUpdate(id, course.getName(), course.getPrice(), course.getMoney_earned(), course.getTeacher());
     }
 }

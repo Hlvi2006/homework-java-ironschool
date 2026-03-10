@@ -3,6 +3,7 @@ package com.example.demo.services;
 
 import com.example.demo.controllers.CourseController;
 import com.example.demo.models.Course;
+import com.example.demo.models.Teacher;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -44,5 +45,14 @@ public class CourseService {
 
     public List<Course> findByPriceRange(Double minPrice, Double maxPrice){
         return courses.values().stream().filter(c -> Double.compare(c.getPrice(), minPrice) >= 0 && Double.compare(c.getPrice(), maxPrice) <= 0).toList();
+    }
+
+    public Course fullUpdate(String id, String name, Double price, Double moneyEarned, Teacher teacher){
+        Course foundCourse = findById(id);
+        foundCourse.setName(name);
+        foundCourse.setPrice(price);
+        foundCourse.setMoney_earned(moneyEarned);
+        foundCourse.setTeacher(teacher);
+        return foundCourse;
     }
 }
