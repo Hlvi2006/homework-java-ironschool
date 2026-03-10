@@ -40,21 +40,20 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<Course> createCourse(@RequestBody Course course){
-        courseService.create(course.getName(), course.getPrice());
-        return ResponseEntity.status(HttpStatus.CREATED).body(course);
+    public ResponseEntity<Course> createCourse(@RequestBody @Valid Course course){
+        Course createdCourse = courseService.create(course);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCourse);
     }
 
     @PutMapping("/{id}")
     public Course replaceCourse(@PathVariable String id, @Valid @RequestBody Course course){
-        Course foundCourse = courseService.findById(id);
-        return courseService.fullUpdate(id, course.getName(), course.getPrice(), course.getMoney_earned(), course.getTeacher());
+        return courseService.fullUpdate(id, course);
     }
 
 
     @PatchMapping("/{id}")
     public Course patchCourse(@PathVariable String id, @RequestBody Course course){
-        return courseService.partialUpdate(id, course.getName(), course.getPrice(), course.getMoney_earned(), course.getTeacher());
+        return courseService.partialUpdate(id, course);
     }
 
     @DeleteMapping("/{id}")

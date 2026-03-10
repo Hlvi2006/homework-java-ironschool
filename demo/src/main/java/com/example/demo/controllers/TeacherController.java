@@ -4,6 +4,7 @@ import com.example.demo.models.Student;
 import com.example.demo.models.Teacher;
 import com.example.demo.services.TeacherService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +28,9 @@ public class TeacherController {
     }
 
     @PostMapping
-    public Teacher addTeacher(@RequestBody Teacher teacher){
-        return teacherService.createTeacher(teacher);
+    public ResponseEntity<Teacher> addTeacher(@RequestBody @Valid Teacher teacher){
+        Teacher createdTeacher = teacherService.createTeacher(teacher);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdTeacher);
     }
    @GetMapping("/name")
     public List<Teacher> getTeachersByName(@RequestParam String name){
@@ -41,7 +43,7 @@ public class TeacherController {
 
    @PutMapping("/{id}")
     public Teacher replaceTeacher(@PathVariable String id, @Valid @RequestBody Teacher teacher){
-        return teacherService.fullUpdate(id, teacher.getName(), teacher.getSalary());
+        return teacherService.fullUpdate(id, teacher);
    }
 
    @PatchMapping("/{id}")

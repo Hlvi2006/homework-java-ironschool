@@ -27,10 +27,10 @@ public class CourseService {
         return courses.values().stream().toList();
     }
 
-    public Course create(String name, Double price){
+    public Course create(Course course){
         Course createdCourse = new Course();
-        createdCourse.setName(name);
-        createdCourse.setPrice(price);
+        createdCourse.setName(course.getName());
+        createdCourse.setPrice(course.getPrice());
         courses.put(createdCourse.getCourseId(), createdCourse);
         return createdCourse;
     }
@@ -51,29 +51,29 @@ public class CourseService {
         return courses.values().stream().filter(c -> Double.compare(c.getPrice(), minPrice) >= 0 && Double.compare(c.getPrice(), maxPrice) <= 0).toList();
     }
 
-    public Course fullUpdate(String id, String name, Double price, Double moneyEarned, Teacher teacher){
+    public Course fullUpdate(String id, Course course){
         Course foundCourse = findById(id);
-        foundCourse.setName(name);
-        foundCourse.setPrice(price);
-        foundCourse.setMoney_earned(moneyEarned);
-        foundCourse.setTeacher(teacher);
+        foundCourse.setName(course.getName());
+        foundCourse.setPrice(course.getPrice());
+        foundCourse.setMoney_earned(course.getMoney_earned());
+        foundCourse.setTeacher(course.getTeacher());
         return foundCourse;
     }
 
-    public Course partialUpdate(String id, String name, Double price, Double moneyEarned, Teacher teacher){
+    public Course partialUpdate(String id, Course course){
         Course foundCourse = findById(id);
 
-        if(name != null){
-            foundCourse.setName(name);
+        if(course.getName() != null){
+            foundCourse.setName(course.getName());
         }
-        if(price != null){
-            foundCourse.setPrice(price);
+        if(course.getPrice() != null){
+            foundCourse.setPrice(course.getPrice());
         }
-        if(moneyEarned != null){
-            foundCourse.setMoney_earned(moneyEarned);
+        if(course.getMoney_earned() != null){
+            foundCourse.setMoney_earned(course.getMoney_earned());
         }
-        if(teacher != null){
-            foundCourse.setTeacher(teacher);
+        if(course.getTeacher() != null){
+            foundCourse.setTeacher(course.getTeacher());
         }
         return foundCourse;
     }

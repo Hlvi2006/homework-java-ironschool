@@ -34,7 +34,6 @@ public class TeacherService {
         return newTeacher;
     }
     public Teacher createTeacher(Teacher teacher) {
-
         Teacher createdTeacher=new Teacher();
         createdTeacher.setName(teacher.getName());
         createdTeacher.setSalary(teacher.getSalary());
@@ -60,11 +59,11 @@ public class TeacherService {
         return  selectedTeachersByName;
     }
 
-    public Teacher fullUpdate(String id, String name, Double salary){
-        Teacher foundTeacher = getTeacherById(id);
-        foundTeacher.setName(name);
-        foundTeacher.setSalary(salary);
-        return foundTeacher;
+    public Teacher fullUpdate(String id, Teacher teacher){
+        Teacher createdTeacher = getTeacherById(id);
+        createdTeacher.setName(teacher.getName());
+        createdTeacher.setSalary(teacher.getSalary());
+        return createdTeacher;
     }
     public Teacher updatePartially(String id,Teacher teacher){
         Teacher updatedTeacher = getTeacherById(id);
