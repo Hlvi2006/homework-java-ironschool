@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 
 import com.example.demo.controllers.CourseController;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.models.Course;
 import com.example.demo.models.Teacher;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class CourseService {
     public Course findById(String id){
         Course foundCourse = courses.get(id);
         if(foundCourse == null){
-            throw new RuntimeException("Could not find course with id: " + id);
+            throw new ResourceNotFoundException("Could not find course with id: " + id);
         }
         return foundCourse;
     }

@@ -26,6 +26,12 @@ public class Course {
         this.price = price;
         this.courseId = UUID.randomUUID().toString();
     }
+    public Course(String name, Double price,Teacher teacher) {
+        this.name = name;
+        this.price = price;
+        this.courseId = UUID.randomUUID().toString();
+        this.teacher = teacher;
+    }
 
     public Course() {
         this.courseId = UUID.randomUUID().toString();

@@ -20,6 +20,13 @@ public class Student {
         this.email = email;
         this.studentId = UUID.randomUUID().toString();
     }
+    public Student(String name, String address, String email,Course course ) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.studentId = UUID.randomUUID().toString();
+        this.course=course;
+    }
     public Student(){}
 
     public String getStudentId() {

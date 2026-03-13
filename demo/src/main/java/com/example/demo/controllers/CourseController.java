@@ -40,7 +40,7 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<Course> createCourse(@RequestBody Course course){
+    public ResponseEntity<Course> createCourse(@Valid @RequestBody Course course){
         courseService.create(course.getName(), course.getPrice());
         return ResponseEntity.status(HttpStatus.CREATED).body(course);
     }

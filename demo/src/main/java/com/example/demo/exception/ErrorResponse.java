@@ -1,0 +1,46 @@
+package com.example.demo.exception;
+import java.time.LocalDate;
+import java.util.List;
+public class ErrorResponse {
+    private int status;
+    private String error;
+    private String message;
+    private List<String> details;
+    private LocalDate timestamp;
+
+    public ErrorResponse(int status, String error, String message) {
+        this.status = status;
+        this.error = error;
+        this.message = message;
+        this.details=null;
+        this.timestamp=LocalDate.now();
+    }
+
+    public ErrorResponse(int status, String error, String message, List<String> details) {
+        this.status = status;
+        this.error = error;
+        this.message = message;
+        this.details = details;
+        this.timestamp=LocalDate.now();
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public List<String> getDetails() {
+        return details;
+    }
+
+    public LocalDate getTimestamp() {
+        return timestamp;
+    }
+}

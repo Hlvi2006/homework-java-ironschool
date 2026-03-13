@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.models.Student;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-@RequestMapping("/student")
 public class StudentService {
     HashMap<String, Student> students=new HashMap<>();
     Student student1=new Student("Arif","Baku 478","ahaciyv5@gmail.com");
@@ -25,7 +25,7 @@ public class StudentService {
         return new ArrayList<>(students.values()) ;
     }
     public Student findById(String id){
-        if(students.get(id)== null) throw new RuntimeException("Student not found");
+        if(students.get(id)== null) throw new ResourceNotFoundException("Student not found with the id:"+id);
         return students.get(id);
     }
     public List<Student> findByName(String name){
@@ -49,7 +49,7 @@ public class StudentService {
     }
     public Student updateStudent(String id,Student student){
         Student existing=findById(id);
-        if(student == null ) throw new RuntimeException("Request body can not be null");
+        if(student == null ) throw new IllegalArgumentException("Request body can not be null");
 
         existing.setName(student.getName());
         existing.setEmail(student.getEmail());

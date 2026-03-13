@@ -35,17 +35,17 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student){
+    public ResponseEntity<Student> createStudent(@Valid @RequestBody Student student){
         Student createdStudent = studentService.create(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable String id,@RequestBody Student student){
+    public ResponseEntity<Student> updateStudent(@PathVariable String id,@Valid @RequestBody Student student){
         Student updatedStudent=studentService.updateStudent(id,student);
         return ResponseEntity.ok(updatedStudent);
     }
     @PatchMapping("/{id}")
-    public Student updatePartialStudent(@PathVariable String id,@RequestBody Student student){
+    public Student updatePartialStudent(@PathVariable String id, @RequestBody Student student){
         return studentService.updateStudentPartially(id,student);
     }
     @DeleteMapping("/{id}")

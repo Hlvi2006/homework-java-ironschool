@@ -27,7 +27,7 @@ public class TeacherController {
     }
 
     @PostMapping
-    public Teacher addTeacher(@RequestBody Teacher teacher){
+    public Teacher addTeacher(@Valid @RequestBody Teacher teacher){
         return teacherService.createTeacher(teacher);
     }
    @GetMapping("/name")
@@ -45,7 +45,7 @@ public class TeacherController {
    }
 
    @PatchMapping("/{id}")
-    public Teacher updateTeacher(@PathVariable String id,@RequestBody Teacher teacher) {
+    public Teacher updateTeacher(@PathVariable String id, @RequestBody Teacher teacher) {
        return teacherService.updatePartially(id, teacher);
 
    }

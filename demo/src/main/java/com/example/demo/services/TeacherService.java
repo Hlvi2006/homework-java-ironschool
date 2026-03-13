@@ -29,7 +29,7 @@ public class TeacherService {
     public Teacher getTeacherById(String id) {
         Teacher newTeacher = teachers.get(id);
         if(newTeacher == null){
-            throw new RuntimeException("Could not find Teacher with this id: " + id);
+            throw new IllegalArgumentException("Could not find Teacher with this id: " + id);
         }
         return newTeacher;
     }
@@ -69,7 +69,7 @@ public class TeacherService {
     public Teacher updatePartially(String id,Teacher teacher){
         Teacher updatedTeacher = getTeacherById(id);
         if(teacher.getName()!= null) updatedTeacher.setName(teacher.getName());
-        if(teacher.getSalary() != 0) updatedTeacher.setSalary(teacher.getSalary());
+        if(teacher.getSalary() != null) updatedTeacher.setSalary(teacher.getSalary());
         return updatedTeacher;
     }
 
